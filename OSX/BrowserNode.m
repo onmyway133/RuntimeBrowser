@@ -127,18 +127,6 @@
 
 + (void)writeFrameworkName:(NSString *)frameworkName className:(NSString *)className content:(NSString *)content {
 
-  if (NSClassFromString(@"NSTableView")) {
-    [self writemacOSFrameworkName:frameworkName className:className content:content];
-  } else if (NSClassFromString(@"UITableView")) {
-    [self writeiOSFrameworkName:frameworkName className:className content:content];
-  }
-}
-
-+ (void)writeiOSFrameworkName:(NSString *)frameworkName className:(NSString *)className content:(NSString *)content {
-
-}
-
-+ (void)writemacOSFrameworkName:(NSString *)frameworkName className:(NSString *)className content:(NSString *)content {
   NSString *folder = [NSString stringWithFormat:@"/Users/khoa/Downloads/macOS-Runtime-Headers/%@", frameworkName];
   if (![[NSFileManager defaultManager] fileExistsAtPath:folder]) {
     [[NSFileManager defaultManager] createDirectoryAtPath:folder withIntermediateDirectories:NO attributes:nil error:nil];
