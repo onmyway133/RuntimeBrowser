@@ -1,19 +1,36 @@
-# Exclude the build directory
-build/*
- 
-# Exclude temp nibs and swap files
-*~.nib
-*.swp
- 
-# Exclude OS X folder attributes
+# OS X
 .DS_Store
- 
-# Exclude user-specific XCode 3 and 4 files
-*.mode1
-*.mode1v3
-*.mode2v3
-*.perspective
-*.perspectivev3
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+# Xcode
+#
+build/
 *.pbxuser
-*.xcworkspace
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
 xcuserdata
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
+
+# CocoaPods
+Pods
+
+# Carthage
+Carthage
+
+# SPM
+.build/
