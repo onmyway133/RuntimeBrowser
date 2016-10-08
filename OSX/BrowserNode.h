@@ -23,4 +23,6 @@
 
 - (NSImage *)icon;
 
++ (void)writeAll;
+
 @end

@@ -9,6 +9,7 @@
 #import "BrowserNode.h"
 #import "RTBRuntime.h"
 #import "RTBProtocol.h"
+#import "RTBRuntimeHeader.h"
 
 @implementation BrowserNode
 
@@ -86,6 +87,66 @@
 
 - (BOOL)canBeSavedAsHeader {
 	return NO;
+}
+
+// MARK: - Write
+
++ (void)writeAll {
+  BrowserNode *root = [BrowserNode rootNodeImages];
+  NSLog(@"Begin writing");
+  for (BrowserNode *framework in root.children) {
+    for (BrowserNode *class in framework.children) {
+      Class kClass = NSClassFromString(class.nodeName);
+
+      if (kClass == nil) {
+        continue;
+      }
+
+      NSString *frameworkName = [self frameworkName:framework];
+
+      if (frameworkName == nil) {
+        continue;
+      }
+
+      NSString *content = [RTBRuntimeHeader headerForClass:kClass displayPropertiesDefaultValues:YES];
+      [self writeFrameworkName:frameworkName className:class.nodeName content:content];
+    }
+  }
+  NSLog(@"Finish writing");
+}
+
++ (NSString *)frameworkName:(BrowserNode *)framework {
+  for (NSString *component in [framework.nodeName componentsSeparatedByString:@"/"]) {
+    if ([component containsString:@".framework"] || [component containsString:@".dylib"]) {
+      return component;
+    }
+  }
+
+  return nil;
+}
+
++ (void)writeFrameworkName:(NSString *)frameworkName className:(NSString *)className content:(NSString *)content {
+
+  if (NSClassFromString(@"NSTableView")) {
+    [self writemacOSFrameworkName:frameworkName className:className content:content];
+  } else if (NSClassFromString(@"UITableView")) {
+    [self writeiOSFrameworkName:frameworkName className:className content:content];
+  }
+}
+
++ (void)writeiOSFrameworkName:(NSString *)frameworkName className:(NSString *)className content:(NSString *)content {
+
+}
+
++ (void)writemacOSFrameworkName:(NSString *)frameworkName className:(NSString *)className content:(NSString *)content {
+  NSString *folder = [NSString stringWithFormat:@"/Users/khoa/Downloads/macOS-Runtime-Headers/%@", frameworkName];
+  if (![[NSFileManager defaultManager] fileExistsAtPath:folder]) {
+    [[NSFileManager defaultManager] createDirectoryAtPath:folder withIntermediateDirectories:NO attributes:nil error:nil];
+  }
+
+  NSString *file = [NSString stringWithFormat:@"%@/%@.h", folder, className];
+
+  [content writeToFile:file atomically:NO encoding:NSUTF8StringEncoding error:nil];
 }
 
 @end

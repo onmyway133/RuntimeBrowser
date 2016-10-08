@@ -72,7 +72,9 @@
     
     NSDictionary *defaultsPath = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Defaults" ofType:@"plist"]];
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaultsPath];
-    
+
+    [BrowserNode writeAll];
+
     return self;
 }
 
