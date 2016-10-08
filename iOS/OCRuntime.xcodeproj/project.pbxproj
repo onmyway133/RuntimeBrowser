@@ -469,7 +469,7 @@
 				ORGANIZATIONNAME = "Nicolas Seriot";
 				TargetAttributes = {
 					03959DCD176AFC4D002A1FCC = {
-						DevelopmentTeam = HK64RUWW3P;
+						DevelopmentTeam = T78DK947F2;
 					};
 					03959DF1176AFC4E002A1FCC = {
 						TestTargetID = 03959DCD176AFC4D002A1FCC;
@@ -702,7 +702,7 @@
 				GCC_PREFIX_HEADER = "OCRuntime/OCRuntime-Prefix.pch";
 				INFOPLIST_FILE = "OCRuntime/OCRuntime-Info.plist";
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "ch.seriot.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = com.fantageek.OCRuntime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -723,7 +723,7 @@
 				GCC_PREFIX_HEADER = "OCRuntime/OCRuntime-Prefix.pch";
 				INFOPLIST_FILE = "OCRuntime/OCRuntime-Info.plist";
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "ch.seriot.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = com.fantageek.OCRuntime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
