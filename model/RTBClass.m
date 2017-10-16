@@ -470,7 +470,7 @@
             
             if(categoryName == nil) categoryName = @"";
             
-            if(groupsByImage[filePath] == nil) {
+            if(groupsByImage[filePath] == nil && filePath != nil) {
                 groupsByImage[filePath] = [NSMutableDictionary dictionary];
             }
             
